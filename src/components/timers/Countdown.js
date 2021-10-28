@@ -39,8 +39,8 @@ class Countdown extends React.Component {
   render() {
     console.log(this.state);
 
-    this.onConvertToSeconds = () => this.state.hours * 60 * 60 + (this.state.minutes * 60) + this.state.seconds;
-    
+    this.onConvertToSeconds = () => parseInt((this.state.hours * 60) * 60) + parseInt(this.state.minutes * 60) + parseInt(this.state.seconds);
+   
     this.onConvertToTime = (input = null) =>  {
       console.log(this.onConvertToSeconds(),"Time Calc");
       let dateTime = new Date(null);

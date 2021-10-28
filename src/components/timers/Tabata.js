@@ -58,8 +58,8 @@ class Tabata extends React.Component {
   render() {
     console.log(this.state);
 
-    this.onConvertToSeconds = () => this.state.hours * 60 * 60 + (this.state.minutes * 60) + this.state.seconds;
-    this.onConvertToBreakSeconds = () => this.state.break.hours * 60 * 60 + (this.state.break.minutes * 60) + this.state.break.seconds;
+    this.onConvertToSeconds = () => parseInt((this.state.hours * 60) * 60) + parseInt(this.state.minutes * 60) + parseInt(this.state.seconds);
+    this.onConvertToBreakSeconds = () => parseInt((this.state.break.hours * 60) * 60) + parseInt(this.state.break.minutes * 60) + parseInt(this.state.break.seconds);
     
     this.onConvertToTime = (input = null) =>  {
       console.log(this.onConvertToSeconds(),"Time Calc");
