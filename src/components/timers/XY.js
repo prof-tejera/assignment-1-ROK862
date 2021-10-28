@@ -134,7 +134,7 @@ class XY extends React.Component {
     
     this.onTriggerSound = () => {
       const newTime = this.state.currentTime;
-      if (!this.state.enableSound && this.state.rounds > 0 || (this.onConvertToSeconds() > newTime)) {
+      if ((!this.state.enableSound && this.state.rounds > 0) || (this.onConvertToSeconds() > newTime)) {
         return false;
       }
       return true;

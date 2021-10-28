@@ -4,8 +4,8 @@
 
 // everywhere.
 const { default: firebase } = require("./firebase");
-const { collection, getDocs } = require("firebase/firestore");
-const { ref, set, get } = require("firebase/database");
+// const { collection, getDocs } = require("firebase/firestore"); Please uncomment when using firebase.
+const { ref, set /*, get*/ } = require("firebase/database");
 
 const consoleStyle = (color) =>
   `color:white; background: ${color}; font-weight: bold; padding:5px; border-radius:5px`;

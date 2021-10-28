@@ -97,6 +97,8 @@ class Countdown extends React.Component {
 
       setTimeout(()=>{
         const newTime = this.state.currentTime - 1.0;
+        if (newTime < 0)
+          return;
         const formatedTime = this.onConvertToTime(newTime);
         this.setState({
           currentTime: newTime,

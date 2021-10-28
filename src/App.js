@@ -6,7 +6,7 @@ import Helper from "./utils/helpers";
 import Login from "./components/forms/Login";
 import { useState } from "react";
 
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link /*, Redirect*/ } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 
@@ -21,13 +21,14 @@ overflow: hidden;
 // Control access to components based on login status.
 const getAccessBasedRender = (comp) => {
   return comp;
-  
-  if (Helper.sys.isLoggedIn()) return comp;
+  /* // User account and access driven component rendering.
+    if (Helper.sys.isLoggedIn()) return comp;
 
-  const redi = <Redirect to="/" />;
-  const user = Helper.sys.getGlobals().USER;
-  const authorized = Helper.sys.getLogin(user);
-  return (!user) ? redi : (authorized) ? comp : redi;
+    const redi = <Redirect to="/" />;
+    const user = Helper.sys.getGlobals().USER;
+    const authorized = Helper.sys.getLogin(user);
+    return (!user) ? redi : (authorized) ? comp : redi;
+  */
 }
 
 function App() {

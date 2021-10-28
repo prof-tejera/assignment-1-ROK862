@@ -231,7 +231,7 @@ class Tabata extends React.Component {
     
     this.onTriggerSound = () => {
       const newTime = this.state.currentTime;
-      if (!this.state.enableSound && this.state.rounds > 0 || (this.onConvertToSeconds() > newTime)) {
+      if ((!this.state.enableSound && this.state.rounds > 0) || (this.onConvertToSeconds() > newTime)) {
         return false;
       }
       return true;
@@ -254,7 +254,7 @@ class Tabata extends React.Component {
           {this.state.rounds}
         </div>
         <div className='StopWatch'>
-          {(this.state.workflow == 'Workout Timmer') ? this.state.formatedTime : this.state.break.formatedTime}
+          {(this.state.workflow === 'Workout Timmer') ? this.state.formatedTime : this.state.break.formatedTime}
           <SoundEffect isPlaying={this.onTriggerSound()} />
         </div>
         <AnchorButton name='Pause' onClick={this.onPauseTimmer} />

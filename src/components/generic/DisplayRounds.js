@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
-import Audio from "react-howler";
 import Options from "../Inputs/Options";
 import Input from "../Inputs/Input";
 import AnchorButton from "../buttons/AnchorButton";
@@ -11,10 +9,6 @@ font-size: 30px;
 `;
 
 class DisplayRounds extends React.Component {
-    constructor (props) {
-        super(props);
-    }
-
     render() {
         return (
             <div>
