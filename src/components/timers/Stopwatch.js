@@ -12,6 +12,14 @@ text-align: center;
 color: white;
 `;
 
+const ComponentTitle = styled.div`
+font-size: 12px;
+text-transform: uppercase;
+margin-bottom: 20px;
+color: #3e94cd;
+font-weight: bold;
+`;
+
 class StopWatch extends React.Component {
   constructor(props) {
     super(props);
@@ -142,6 +150,7 @@ class StopWatch extends React.Component {
     }
 
     return <div className={(this.props.theme) ? this.props.theme : 'Default-Pink-Theme'}>
+      <ComponentTitle>StopWatch</ComponentTitle>
       {this.renderState()}
     </div>;
   }

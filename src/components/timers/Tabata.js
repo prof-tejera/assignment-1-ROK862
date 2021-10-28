@@ -16,6 +16,14 @@ text-align: center;
 color: white;
 `;
 
+const ComponentTitle = styled.div`
+font-size: 12px;
+text-transform: uppercase;
+margin-bottom: 20px;
+color: #3e94cd;
+font-weight: bold;
+`;
+
 const WorkflowLabel = styled.div`
 font-size: 20px;
 font-weight: 100;
@@ -270,6 +278,7 @@ class Tabata extends React.Component {
     }
 
     return <div className={(this.props.theme) ? this.props.theme : 'Default-Pink-Theme'}>
+      <ComponentTitle>StopWatch</ComponentTitle>
       {this.renderState()}
     </div>;
   }
