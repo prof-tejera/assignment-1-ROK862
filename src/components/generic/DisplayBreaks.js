@@ -23,5 +23,5 @@ class DisplayBreaks extends React.Component {
         )
     }
 }
-//onSetHours onSetMinutes onSetSeconds onSetRounds onConvertToTime onStartTimming onStopTimer
+//onSetHours onSetMinutes onSetSeconds onSetRounds onConvertToTime onStartTiming onStopTimer
 export default DisplayBreaks;

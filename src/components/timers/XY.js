@@ -71,10 +71,10 @@ class XY extends React.Component {
       });
     }
 
-    this.onStartTimming = () => {
+    this.onStartTiming = () => {
       const timeInSeconds = 0;
       this.setState({
-        status: 'timming',
+        status: 'riming',
         currentTime: timeInSeconds
       });
       this.timmerTickTock(true);
@@ -105,7 +105,7 @@ class XY extends React.Component {
     }
 
     this.timmerTickTock = (startOnCurrentThread=false) => {
-      if (this.state.status !== 'timming' && !startOnCurrentThread) return;
+      if (this.state.status !== 'riming' && !startOnCurrentThread) return;
 
       setTimeout(()=>{
         let newTime = this.state.currentTime + 1.0;
@@ -156,10 +156,10 @@ class XY extends React.Component {
           <div className='Preview'>
             {this.onConvertToTime()}
           </div>
-          <AnchorButton name='Start Timming' onClick={this.onStartTimming} />
+          <AnchorButton name='Start riming' onClick={this.onStartTiming} />
           <AnchorButton name='Close Timer' onClick={this.onStopTimer} />
         </DigitalWatch>
-      else if (this.state.status === 'timming')
+      else if (this.state.status === 'riming')
       return <DigitalWatch>
         <div className='StopWatchLabels'>
           {this.state.rounds}
@@ -175,8 +175,8 @@ class XY extends React.Component {
          <div className='StopWatch'>
            {this.state.formatedTime}
          </div>
-         <AnchorButton name='Start Timming' onClick={this.onStartTimming} />
-         <AnchorButton name='Stop Timming' onClick={this.onStopTimer} />
+         <AnchorButton name='Start riming' onClick={this.onStartTiming} />
+         <AnchorButton name='Stop riming' onClick={this.onStopTimer} />
        </DigitalWatch>
     }
 

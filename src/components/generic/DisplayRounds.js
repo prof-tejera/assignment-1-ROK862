@@ -24,11 +24,11 @@ class DisplayRounds extends React.Component {
                 <div className='Preview'>
                     {this.props.onConvertToTime()}
                 </div>
-                <AnchorButton name='Start Timming' onClick={this.props.onStartTimming} />
+                <AnchorButton name='Start riming' onClick={this.props.onStartTiming} />
                 <AnchorButton name='Close Timer' onClick={this.props.onStopTimer} />
             </div>
         )
     }
 }
-//onSetHours onSetMinutes onSetSeconds onSetRounds onConvertToTime onStartTimming onStopTimer
+//onSetHours onSetMinutes onSetSeconds onSetRounds onConvertToTime onStartTiming onStopTimer
 export default DisplayRounds;
