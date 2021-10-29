@@ -158,7 +158,7 @@ class Documentation extends React.Component {
                 defaultValue: "Required",
               },{
                 prop: "onStartTiming",
-                description: "onStartTiming updates parent state once the start riming button has been clicked.",
+                description: "onStartTiming updates parent state once the start timing button has been clicked.",
                 type: "function",
                 defaultValue: "Required",
               },{
@@ -201,7 +201,7 @@ class Documentation extends React.Component {
                 defaultValue: "Required",
               },{
                 prop: "onStartTiming",
-                description: "onStartTiming updates parent state once the start riming button has been clicked.",
+                description: "onStartTiming updates parent state once the start timing button has been clicked.",
                 type: "function",
                 defaultValue: "Required",
               },{

@@ -43,12 +43,12 @@ class XY extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
 
     this.onConvertToSeconds = () => parseInt((this.state.hours * 60) * 60) + parseInt(this.state.minutes * 60) + parseInt(this.state.seconds);
     
     this.onConvertToTime = (input = null) =>  {
-      console.log(this.onConvertToSeconds(),"Time Calc");
+      // console.log(this.onConvertToSeconds(),"Time Calc");
       let dateTime = new Date(null);
       dateTime.setSeconds((input) ? input : this.onConvertToSeconds()); // specify value of SECONDS
       return dateTime.toISOString().substr(11, 8);
@@ -82,7 +82,7 @@ class XY extends React.Component {
     this.onStartTiming = () => {
       const timeInSeconds = 0;
       this.setState({
-        status: 'riming',
+        status: 'timing',
         currentTime: timeInSeconds
       });
       this.timmerTickTock(true);
@@ -113,14 +113,14 @@ class XY extends React.Component {
     }
 
     this.timmerTickTock = (startOnCurrentThread=false) => {
-      if (this.state.status !== 'riming' && !startOnCurrentThread) return;
+      if (this.state.status !== 'timing' && !startOnCurrentThread) return;
 
       setTimeout(()=>{
         let newTime = this.state.currentTime + 1.0;
         const formatedTime = this.onConvertToTime(newTime);
         
         if (this.onConvertToSeconds() <= newTime) {
-          console.log(this.onConvertToSeconds(), newTime);
+          // console.log(this.onConvertToSeconds(), newTime);
           if (this.state.rounds > 0) {
             const newRounds = this.state.rounds - 1;
             newTime = 0;
@@ -164,10 +164,10 @@ class XY extends React.Component {
           <div className='Preview'>
             {this.onConvertToTime()}
           </div>
-          <AnchorButton name='Start riming' onClick={this.onStartTiming} />
+          <AnchorButton name='Start timing' onClick={this.onStartTiming} />
           <AnchorButton name='Close Timer' onClick={this.onStopTimer} />
         </DigitalWatch>
-      else if (this.state.status === 'riming')
+      else if (this.state.status === 'timing')
       return <DigitalWatch>
         <div className='StopWatchLabels'>
           {this.state.rounds}
@@ -182,9 +182,10 @@ class XY extends React.Component {
        return <DigitalWatch>
          <div className='StopWatch'>
            {this.state.formatedTime}
+           <SoundEffect clip={this.state.status} isPlaying={true} />
          </div>
-         <AnchorButton name='Start riming' onClick={this.onStartTiming} />
-         <AnchorButton name='Stop riming' onClick={this.onStopTimer} />
+         <AnchorButton name='Start timing' onClick={this.onStartTiming} />
+         <AnchorButton name='Stop timing' onClick={this.onStopTimer} />
        </DigitalWatch>
     }
 

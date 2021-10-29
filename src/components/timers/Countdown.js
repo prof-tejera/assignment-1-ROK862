@@ -1,5 +1,6 @@
 import React from "react";
 import AnchorButton from "../buttons/AnchorButton";
+import SoundEffect from "../../audio/SoundEffect";
 import Helper from "../../utils/helpers";
 import styled from "styled-components";
 import Options from "../Inputs/Options";
@@ -37,12 +38,12 @@ class Countdown extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
 
     this.onConvertToSeconds = () => parseInt((this.state.hours * 60) * 60) + parseInt(this.state.minutes * 60) + parseInt(this.state.seconds);
    
     this.onConvertToTime = (input = null) =>  {
-      console.log(this.onConvertToSeconds(),"Time Calc");
+      // console.log(this.onConvertToSeconds(),"Time Calc");
       let dateTime = new Date(null);
       dateTime.setSeconds((input) ? input : this.onConvertToSeconds()); // specify value of SECONDS
       return dateTime.toISOString().substr(11, 8);
@@ -76,7 +77,7 @@ class Countdown extends React.Component {
     this.onStartTiming = () => {
       const timeInSeconds = this.onConvertToSeconds();
       this.setState({
-        status: 'riming',
+        status: 'timing',
         currentTime: timeInSeconds
       });
       this.timmerTickTock(true);
@@ -101,7 +102,7 @@ class Countdown extends React.Component {
     }
 
     this.timmerTickTock = (startOnCurrentThread=false) => {
-      if (this.state.status !== 'riming' && !startOnCurrentThread) return;
+      if (this.state.status !== 'timing' && !startOnCurrentThread) return;
 
       setTimeout(()=>{
         const newTime = this.state.currentTime - 1.0;
@@ -114,6 +115,14 @@ class Countdown extends React.Component {
         });
         this.timmerTickTock();
       },1000);
+    }
+
+    this.onTriggerSound = () => {
+      const newTime = this.state.currentTime;
+      if ((!this.state.enableSound && this.state.rounds > 0) || (this.onConvertToSeconds() > newTime)) {
+        return false;
+      }
+      return true;
     }
 
     this.renderState = () => {
@@ -129,10 +138,10 @@ class Countdown extends React.Component {
           <div className='Preview'>
             {this.onConvertToTime()}
           </div>
-          <AnchorButton name='Start riming' onClick={this.onStartTiming} />
+          <AnchorButton name='Start timing' onClick={this.onStartTiming} />
           <AnchorButton name='Close Timer' onClick={this.onStopTimer} />
         </DigitalWatch>
-      else if (this.state.status === 'riming')
+      else if (this.state.status === 'timing')
       return <DigitalWatch>
         <div className='StopWatch'>
           {this.state.formatedTime}
@@ -142,10 +151,11 @@ class Countdown extends React.Component {
        else if (this.state.status === 'paused')
        return <DigitalWatch>
          <div className='StopWatch'>
-           {this.state.formatedTime} s
+           {this.state.formatedTime}
+           <SoundEffect clip={this.state.status} isPlaying={true} />
          </div>
-         <AnchorButton name='Start riming' onClick={this.onStartTiming} />
-         <AnchorButton name='Stop riming' onClick={this.onStopTimer} />
+         <AnchorButton name='Start timing' onClick={this.onStartTiming} />
+         <AnchorButton name='Stop timing' onClick={this.onStopTimer} />
        </DigitalWatch>
     }
 

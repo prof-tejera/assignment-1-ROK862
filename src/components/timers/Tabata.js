@@ -108,7 +108,7 @@ class Tabata extends React.Component {
       let b = this.state.break;
       b.currentTime = timeInSeconds;
       this.setState({
-        status: 'riming',
+        status: 'timing',
         currentTime: timeInSeconds,
         break: b
       });
@@ -178,7 +178,7 @@ class Tabata extends React.Component {
     }
 
     this.timmerTickTock = (startOnCurrentThread=false) => {
-      if (this.state.status !== 'riming' && !startOnCurrentThread) return;
+      if (this.state.status !== 'timing' && !startOnCurrentThread) return;
 
       setTimeout(()=>{
         let newTime = this.state.currentTime + 1.0;
@@ -204,7 +204,7 @@ class Tabata extends React.Component {
     }
 
     this.timmerBreakTickTock = (startOnCurrentThread=false) => {
-      if (this.state.status !== 'riming' && !startOnCurrentThread) return;
+      if (this.state.status !== 'timing' && !startOnCurrentThread) return;
 
       setTimeout(()=>{
         let b = this.state.break;
@@ -251,9 +251,9 @@ class Tabata extends React.Component {
         else if (this.state.status === 'active')
         return <DigitalWatch>
           <DisplayRounds onSetHours={this.onSetHours} onSetMinutes={this.onSetMinutes} onSetSeconds={this.onSetSeconds} onSetRounds={this.onSetRounds} onConvertToTime={this.onConvertToTime} onStartTiming={this.onStartTiming} onStopTimer={this.onStopTimer} />
-          <DisplayBreaks onSetHours={this.onSetBreakHours} onSetMinutes={this.onSetBreakMinutes} onSetSeconds={this.onSetBreakSeconds} onSetRounds={this.onSetRounds} onConvertToTime={this.onConvertToBreakTime} onStartTiming={this.onStartBreakriming} onStopTimer={this.onStopTimer} />
+          <DisplayBreaks onSetHours={this.onSetBreakHours} onSetMinutes={this.onSetBreakMinutes} onSetSeconds={this.onSetBreakSeconds} onSetRounds={this.onSetRounds} onConvertToTime={this.onConvertToBreakTime} onStartTiming={this.onStartBreaktiming} onStopTimer={this.onStopTimer} />
         </DigitalWatch>
-      else if (this.state.status === 'riming')
+      else if (this.state.status === 'timing')
       return <DigitalWatch>
         <WorkflowLabel>
           {this.state.workflow}
@@ -271,9 +271,10 @@ class Tabata extends React.Component {
        return <DigitalWatch>
          <div className='StopWatch'>
            {this.state.formatedTime}
+           <SoundEffect clip={this.state.status} isPlaying={true} />
          </div>
-         <AnchorButton name='Start riming' onClick={this.onStartTiming} />
-         <AnchorButton name='Stop riming' onClick={this.onStopTimer} />
+         <AnchorButton name='Start timing' onClick={this.onStartTiming} />
+         <AnchorButton name='Stop timing' onClick={this.onStopTimer} />
        </DigitalWatch>
     }
 

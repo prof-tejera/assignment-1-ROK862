@@ -24,7 +24,7 @@ class DisplayRounds extends React.Component {
                 <div className='Preview'>
                     {this.props.onConvertToTime()}
                 </div>
-                <AnchorButton name='Start riming' onClick={this.props.onStartTiming} />
+                <AnchorButton name='Start timing' onClick={this.props.onStartTiming} />
                 <AnchorButton name='Close Timer' onClick={this.props.onStopTimer} />
             </div>
         )
